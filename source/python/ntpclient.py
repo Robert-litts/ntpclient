@@ -7,9 +7,8 @@ host = "time-a-g.nist.gov"; # The server.
 port = 123; # Port.
 read_buffer = 1024; # The size of the buffer to read in the received UDP packet.
 address = ( host, port ); # Tuple needed by sendto.
-data = '\x1b' + 47 * '\0'
+data = '\x1b' + 47 * '\0' #48 Byte Message: First byte, 0x1B = Leap Indicator (0), Version Number (3), Mode (3) (00 011 011); 47 remaining null bytes
 data_encoded = data.encode("utf-8")
-#data = '\x1b' + 47 * '\0'; # Hex message to send to the server.
 
 epoch = 2208988800; # Time in seconds for UNIX Epoch Jan, 1970 - 00:00h (UTC) - 1/1/1900- 00:00h.
 #(70*365 + 17)*86400 = 2208988800 --> Accounts for 70 years, 365 days per year, 17 leap years, 86,400 seconds/day
